@@ -26,19 +26,19 @@ interface PaymentModalProps {
 const plans = [
   {
     id: "starter",
-    name: "Starter Plan",
-    description: "Perfect for getting started",
+    name: "Community Plan",
+    description: "Perfect for small NGOs",
     price: "₹999",
     amount: "999",
-    features: ["5 Projects", "Basic Support", "10GB Storage"],
+    features: ["Up to 50 Students", "Basic Reports", "Email Support"],
   },
   {
     id: "pro",
-    name: "Pro Plan",
-    description: "Most popular choice",
+    name: "Organization Plan",
+    description: "Most popular for NGOs",
     price: "₹1999",
     amount: "1999",
-    features: ["Unlimited Projects", "Priority Support", "100GB Storage", "Advanced Analytics"],
+    features: ["Unlimited Students", "Advanced Analytics", "Priority Support", "Custom Reports"],
     popular: true,
   },
 ];
@@ -91,7 +91,7 @@ export const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
       key: result.razorpayKey,
       amount: parseInt(plan.amount) * 100, // Convert to paise
       currency: "INR",
-      name: "ACME",
+      name: "EduConnect",
       description: `${plan.name} Subscription`,
       order_id: result.payment.razorpayOrderId,
       handler: async (response: any) => {

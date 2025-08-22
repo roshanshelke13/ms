@@ -1,23 +1,23 @@
-import { Shield, CreditCard, Code, Check } from "lucide-react";
+import { GraduationCap, Users, BarChart3, Check } from "lucide-react";
 
 const features = [
   {
-    icon: Shield,
-    title: "Next.js and React",
-    description: "Leverage the power of modern web technologies for building faster, more reliable applications with enhanced user experience.",
-    features: ["Modern React patterns", "Server-side rendering", "Optimized performance"],
+    icon: Users,
+    title: "Student Management",
+    description: "Comprehensive student tracking system with enrollment, attendance, and progress monitoring designed specifically for NGO education programs.",
+    features: ["Student enrollment", "Attendance tracking", "Progress reports"],
   },
   {
-    icon: CreditCard,
-    title: "Postgres and Drizzle ORM",
-    description: "Robust database solution with an intuitive ORM for seamless data management and powerful query capabilities.",
-    features: ["Type-safe queries", "Database migrations", "Relationship management"],
+    icon: GraduationCap,
+    title: "Program Administration",
+    description: "Powerful tools to manage educational programs, curriculum, and resources with streamlined workflows for NGO operations.",
+    features: ["Curriculum planning", "Resource allocation", "Teacher management"],
   },
   {
-    icon: Code,
-    title: "Stripe Integration",
-    description: "Seamless payment processing and subscription management with industry-leading security and reliability.",
-    features: ["Secure payments", "Subscription billing", "Webhook support"],
+    icon: BarChart3,
+    title: "Impact Analytics",
+    description: "Data-driven insights and comprehensive reporting to demonstrate educational impact and support funding applications.",
+    features: ["Performance metrics", "Impact reports", "Donor dashboards"],
   },
 ];
 
@@ -27,10 +27,10 @@ export const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-secondary mb-4">
-            Everything You Need to Launch
+            Empowering Educational Excellence
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Built with modern technologies and essential integrations to get you from idea to production in days, not months.
+            Complete suite of tools designed specifically for NGOs to manage educational programs, track student progress, and demonstrate meaningful impact.
           </p>
         </div>
 

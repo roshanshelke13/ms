@@ -26,13 +26,13 @@ export const HeroSection = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-secondary leading-tight">
-                  Build Your SaaS
-                  <span className="text-primary block">Faster Than Ever</span>
+                  Transform Education
+                  <span className="text-primary block">Through Technology</span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Launch your SaaS product in record time with our powerful, 
-                  ready-to-use template. Packed with modern technologies and 
-                  essential integrations.
+                  Empower NGOs and educational initiatives with comprehensive 
+                  management tools. Track students, manage programs, process 
+                  payments, and create meaningful impact.
                 </p>
               </div>
               
@@ -42,7 +42,7 @@ export const HeroSection = () => {
                   className="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transition-all inline-flex items-center justify-center space-x-2"
                   data-testid="button-deploy"
                 >
-                  <span>{isAuthenticated ? "Go to Dashboard" : "Deploy your own"}</span>
+                  <span>{isAuthenticated ? "Go to Dashboard" : "Start Your Mission"}</span>
                   <ArrowRight className="h-5 w-5" />
                 </Button>
                 <Button
@@ -50,18 +50,18 @@ export const HeroSection = () => {
                   className="btn-secondary px-8 py-4 rounded-lg font-semibold text-lg"
                   data-testid="button-demo"
                 >
-                  View Demo
+                  Watch Demo
                 </Button>
               </div>
 
               <div className="flex items-center space-x-6 text-sm text-gray-500">
                 <div className="flex items-center space-x-2">
                   <Check className="h-4 w-4 text-green-500" />
-                  <span>No credit card required</span>
+                  <span>No setup fees</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Check className="h-4 w-4 text-green-500" />
-                  <span>Open source</span>
+                  <span>NGO-focused</span>
                 </div>
               </div>
             </div>
@@ -74,13 +74,13 @@ export const HeroSection = () => {
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
                 <div className="text-green-400 font-mono space-y-3 text-sm">
-                  <div>$ git clone https://github.com/nextjs/saas-starter</div>
-                  <div>$ pnpm install</div>
-                  <div>$ pnpm db:setup</div>
-                  <div>$ pnpm db:migrate</div>
-                  <div>$ pnpm db:seed</div>
+                  <div>$ Welcome to EduConnect</div>
+                  <div>$ Creating student database...</div>
+                  <div>$ Setting up payment system...</div>
+                  <div>$ Configuring NGO dashboard...</div>
+                  <div>$ Loading education programs...</div>
                   <div className="flex items-center">
-                    $ pnpm dev 
+                    $ System ready! 
                     <span className="ml-2 border-r-2 border-green-400 animate-blink"></span>
                   </div>
                 </div>

@@ -6,7 +6,7 @@ import { PaymentModal } from "@/components/payment/payment-modal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Upload, Settings, CreditCard } from "lucide-react";
+import { Users, BookOpen, CreditCard, BarChart3, Settings } from "lucide-react";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -38,9 +38,9 @@ export default function Dashboard() {
         <main className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-secondary">Dashboard</h1>
+              <h1 className="text-3xl font-bold text-secondary">Education Dashboard</h1>
               <p className="text-gray-600 mt-2">
-                Welcome back, {user?.name}! Here's your account overview.
+                Welcome back, {user?.name}! Manage your educational programs and track student progress.
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Plan</span>
+                    <span className="text-gray-600">Program Plan</span>
                     <Badge {...getSubscriptionBadge(user?.subscription || "free")}>
                       {getSubscriptionBadge(user?.subscription || "free").label}
                     </Badge>
@@ -101,7 +101,7 @@ export default function Dashboard() {
                     data-testid="button-upgrade"
                   >
                     <CreditCard className="mr-2 h-4 w-4" />
-                    Upgrade Plan
+                    Expand Programs
                   </Button>
                 </CardContent>
               </Card>
@@ -115,18 +115,18 @@ export default function Dashboard() {
                   <Button
                     variant="outline"
                     className="w-full justify-start"
-                    data-testid="button-upload"
+                    data-testid="button-students"
                   >
-                    <Upload className="mr-3 h-4 w-4" />
-                    Upload Files
+                    <Users className="mr-3 h-4 w-4" />
+                    Manage Students
                   </Button>
                   <Button
                     variant="outline"
                     className="w-full justify-start"
-                    data-testid="button-settings"
+                    data-testid="button-programs"
                   >
-                    <Settings className="mr-3 h-4 w-4" />
-                    Settings
+                    <BookOpen className="mr-3 h-4 w-4" />
+                    View Programs
                   </Button>
                 </CardContent>
               </Card>
@@ -136,21 +136,21 @@ export default function Dashboard() {
             <div className="mt-8">
               <Card>
                 <CardHeader>
-                  <CardTitle>Usage Overview</CardTitle>
+                  <CardTitle>Impact Overview</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-primary">5</div>
-                      <p className="text-gray-600">Projects Created</p>
+                      <div className="text-3xl font-bold text-primary">142</div>
+                      <p className="text-gray-600">Students Enrolled</p>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-primary">2.4GB</div>
-                      <p className="text-gray-600">Storage Used</p>
+                      <div className="text-3xl font-bold text-primary">8</div>
+                      <p className="text-gray-600">Active Programs</p>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-primary">12</div>
-                      <p className="text-gray-600">API Requests Today</p>
+                      <div className="text-3xl font-bold text-primary">94%</div>
+                      <p className="text-gray-600">Completion Rate</p>
                     </div>
                   </div>
                 </CardContent>

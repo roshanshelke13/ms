@@ -10,7 +10,7 @@
   --card-foreground: hsl(210 25% 7.8431%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(210 25% 7.8431%);
-  --primary: hsl(17 100% 60%);
+  --primary: hsl(210 100% 56%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(210 25% 7.8431%);
   --secondary-foreground: hsl(0 0% 100%);
@@ -22,7 +22,7 @@
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(201.4286 30.4348% 90.9804%);
   --input: hsl(200 23.0769% 97.4510%);
-  --ring: hsl(17 100% 60%);
+  --ring: hsl(210 100% 56%);
   --chart-1: hsl(203.8863 88.2845% 53.1373%);
   --chart-2: hsl(159.7826 100% 36.0784%);
   --chart-3: hsl(42.0290 92.8251% 56.2745%);
@@ -30,12 +30,12 @@
   --chart-5: hsl(341.4894 75.2000% 50.9804%);
   --sidebar: hsl(180 6.6667% 97.0588%);
   --sidebar-foreground: hsl(210 25% 7.8431%);
-  --sidebar-primary: hsl(17 100% 60%);
+  --sidebar-primary: hsl(210 100% 56%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(211.5789 51.3514% 92.7451%);
-  --sidebar-accent-foreground: hsl(17 100% 60%);
+  --sidebar-accent-foreground: hsl(210 100% 56%);
   --sidebar-border: hsl(205.0000 25.0000% 90.5882%);
-  --sidebar-ring: hsl(17 100% 60%);
+  --sidebar-ring: hsl(210 100% 56%);
   --font-sans: 'Inter', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
@@ -52,7 +52,7 @@
   --spacing: 0.25rem;
   
   /* Custom colors for the SaaS theme */
-  --orange-primary: hsl(17 100% 60%);
+  --orange-primary: hsl(210 100% 56%);
   --orange-secondary: hsl(17 100% 50%);
   --gray-secondary: hsl(210 25% 7.8431%);
   --gray-accent: hsl(211.5789 51.3514% 92.7451%);
@@ -65,19 +65,19 @@
   --card-foreground: hsl(0 0% 85.0980%);
   --popover: hsl(0 0% 0%);
   --popover-foreground: hsl(200 6.6667% 91.1765%);
-  --primary: hsl(17 100% 60%);
+  --primary: hsl(210 100% 56%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(195.0000 15.3846% 94.9020%);
   --secondary-foreground: hsl(210 25% 7.8431%);
   --muted: hsl(0 0% 9.4118%);
   --muted-foreground: hsl(210 3.3898% 46.2745%);
   --accent: hsl(205.7143 70% 7.8431%);
-  --accent-foreground: hsl(17 100% 60%);
+  --accent-foreground: hsl(210 100% 56%);
   --destructive: hsl(356.3033 90.5579% 54.3137%);
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(210 5.2632% 14.9020%);
   --input: hsl(207.6923 27.6596% 18.4314%);
-  --ring: hsl(17 100% 60%);
+  --ring: hsl(210 100% 56%);
   --chart-1: hsl(203.8863 88.2845% 53.1373%);
   --chart-2: hsl(159.7826 100% 36.0784%);
   --chart-3: hsl(42.0290 92.8251% 56.2745%);
@@ -85,12 +85,12 @@
   --chart-5: hsl(341.4894 75.2000% 50.9804%);
   --sidebar: hsl(228 9.8039% 10%);
   --sidebar-foreground: hsl(0 0% 85.0980%);
-  --sidebar-primary: hsl(17 100% 60%);
+  --sidebar-primary: hsl(210 100% 56%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(205.7143 70% 7.8431%);
-  --sidebar-accent-foreground: hsl(17 100% 60%);
+  --sidebar-accent-foreground: hsl(210 100% 56%);
   --sidebar-border: hsl(205.7143 15.7895% 26.0784%);
-  --sidebar-ring: hsl(17 100% 60%);
+  --sidebar-ring: hsl(210 100% 56%);
   --font-sans: 'Inter', sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
@@ -121,7 +121,7 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, hsl(17 100% 60%) 0%, hsl(17 90% 55%) 100%);
+  background: linear-gradient(135deg, hsl(210 100% 56%) 0%, hsl(210 90% 46%) 100%);
 }
 
 .card-hover {

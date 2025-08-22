@@ -1,8 +1,8 @@
-# SaaS Template Application
+# EduConnect - NGO Education Management Platform
 
 ## Overview
 
-This is a full-stack SaaS template application built with modern web technologies. It provides a complete foundation for launching SaaS products, featuring user authentication, payment processing, and a responsive web interface. The application follows a monorepo structure with a shared schema, Express backend, and React frontend.
+This is a full-stack NGO education management application built with modern web technologies. It provides a comprehensive solution for NGOs to manage educational programs, track student progress, process payments, and demonstrate impact. The application features user authentication, Razorpay payment processing, and an intuitive education-focused interface.
 
 ## User Preferences
 

@@ -33,20 +33,20 @@ export const Header = () => {
           <div className="flex justify-between items-center py-4">
             <Link href="/" className="flex items-center space-x-2" data-testid="link-home">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
+                <span className="text-white font-bold text-lg">E</span>
               </div>
-              <span className="text-2xl font-bold text-secondary">ACME</span>
+              <span className="text-2xl font-bold text-secondary">EduConnect</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-600 hover:text-primary transition-colors" data-testid="link-features">
-                Features
+                Programs
               </a>
               <a href="#pricing" className="text-gray-600 hover:text-primary transition-colors" data-testid="link-pricing">
-                Pricing
+                Plans
               </a>
               <a href="#docs" className="text-gray-600 hover:text-primary transition-colors" data-testid="link-docs">
-                Docs
+                Resources
               </a>
             </div>
 
@@ -118,13 +118,13 @@ export const Header = () => {
             <div className="md:hidden border-t border-gray-200 py-4">
               <div className="flex flex-col space-y-4">
                 <a href="#features" className="text-gray-600 hover:text-primary transition-colors">
-                  Features
+                  Programs
                 </a>
                 <a href="#pricing" className="text-gray-600 hover:text-primary transition-colors">
-                  Pricing
+                  Plans
                 </a>
                 <a href="#docs" className="text-gray-600 hover:text-primary transition-colors">
-                  Docs
+                  Resources
                 </a>
               </div>
             </div>
