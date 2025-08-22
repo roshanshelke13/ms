@@ -11,6 +11,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Loader2 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+// Declare Razorpay type
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -58,34 +64,15 @@ export const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
       const result = await response.json();
 
       if (result.success) {
-        // In a real implementation, you would integrate with Razorpay here
-        // For now, we'll simulate a successful payment
-        
-        // Simulate Razorpay payment process
-        setTimeout(async () => {
-          try {
-            // Verify payment
-            await apiRequest("POST", "/api/v1/payment/verify", {
-              razorpayOrderId: result.payment.razorpayOrderId,
-              razorpayPaymentId: "pay_" + Date.now(),
-              plan: plan.id,
-            });
-
-            await refetchUser();
-            onClose();
-            
-            toast({
-              title: "Payment Successful!",
-              description: `You have successfully upgraded to ${plan.name}`,
-            });
-          } catch (error: any) {
-            toast({
-              title: "Payment Verification Failed",
-              description: error.message || "Please contact support",
-              variant: "destructive",
-            });
-          }
-        }, 2000);
+        // Load Razorpay script if not already loaded
+        if (!window.Razorpay) {
+          const script = document.createElement('script');
+          script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+          script.onload = () => initializeRazorpay(result, plan);
+          document.body.appendChild(script);
+        } else {
+          initializeRazorpay(result, plan);
+        }
       } else {
         throw new Error(result.message || "Payment initiation failed");
       }
@@ -97,6 +84,60 @@ export const PaymentModal = ({ isOpen, onClose }: PaymentModalProps) => {
       });
       setIsProcessing(false);
     }
+  };
+
+  const initializeRazorpay = (result: any, plan: any) => {
+    const options = {
+      key: result.razorpayKey,
+      amount: parseInt(plan.amount) * 100, // Convert to paise
+      currency: "INR",
+      name: "ACME",
+      description: `${plan.name} Subscription`,
+      order_id: result.payment.razorpayOrderId,
+      handler: async (response: any) => {
+        try {
+          // Verify payment
+          await apiRequest("POST", "/api/v1/payment/verify", {
+            razorpayOrderId: response.razorpay_order_id,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpaySignature: response.razorpay_signature,
+            plan: plan.id,
+          });
+
+          await refetchUser();
+          onClose();
+          setIsProcessing(false);
+          
+          toast({
+            title: "Payment Successful!",
+            description: `You have successfully upgraded to ${plan.name}`,
+          });
+        } catch (error: any) {
+          setIsProcessing(false);
+          toast({
+            title: "Payment Verification Failed",
+            description: error.message || "Please contact support",
+            variant: "destructive",
+          });
+        }
+      },
+      prefill: {
+        name: "",
+        email: "",
+        contact: ""
+      },
+      theme: {
+        color: "#FF6B35"
+      },
+      modal: {
+        ondismiss: () => {
+          setIsProcessing(false);
+        }
+      }
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
   };
 
   return (

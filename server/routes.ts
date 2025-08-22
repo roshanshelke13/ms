@@ -4,8 +4,15 @@ import { storage } from "./storage";
 import { loginSchema, signupSchema, paymentSchema } from "@shared/schema";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Razorpay from "razorpay";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+
+// Initialize Razorpay
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID || "",
+  key_secret: process.env.RAZORPAY_KEY_SECRET || "",
+});
 
 // Simple auth middleware
 const authenticateToken = async (req: any, res: any, next: any) => {
@@ -197,10 +204,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = paymentSchema.parse(req.body);
       
+      // Create Razorpay order
+      const options = {
+        amount: parseInt(validatedData.amount) * 100, // Convert to paise
+        currency: "INR",
+        receipt: `receipt_${Date.now()}`,
+        notes: {
+          plan: validatedData.plan,
+          userId: req.user.id,
+        },
+      };
+
+      const razorpayOrder = await razorpay.orders.create(options);
+      
       // Create payment record
       const payment = await storage.createPayment({
         userId: req.user.id,
-        razorpayOrderId: `order_${Date.now()}`, // This would be from Razorpay API
+        razorpayOrderId: razorpayOrder.id,
         amount: validatedData.amount,
         currency: "INR",
         status: "pending",
@@ -212,10 +232,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         success: true,
         message: "Payment order created",
         payment,
-        // In real implementation, you would return Razorpay order details
-        razorpayKey: process.env.RAZORPAY_KEY_ID || "rzp_test_key",
+        razorpayKey: process.env.RAZORPAY_KEY_ID,
       });
     } catch (error: any) {
+      console.error("Payment creation error:", error);
       res.status(400).json({ 
         success: false,
         message: error.message || "Payment creation failed" 
@@ -226,10 +246,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Verify payment
   app.post("/api/v1/payment/verify", authenticateToken, async (req: any, res) => {
     try {
-      const { razorpayOrderId, razorpayPaymentId, plan } = req.body;
+      const { razorpayOrderId, razorpayPaymentId, razorpaySignature, plan } = req.body;
       
-      // In real implementation, you would verify with Razorpay
-      // For now, we'll simulate successful payment
+      // Verify payment signature with Razorpay
+      const crypto = require('crypto');
+      const body = razorpayOrderId + "|" + razorpayPaymentId;
+      const expectedSignature = crypto
+        .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET || "")
+        .update(body.toString())
+        .digest('hex');
+      
+      const isValidSignature = expectedSignature === razorpaySignature;
+      
+      if (!isValidSignature) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid payment signature"
+        });
+      }
       
       // Update user subscription
       await storage.updateUser(req.user.id, { subscription: plan });
@@ -250,6 +284,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: "Payment verified successfully",
       });
     } catch (error: any) {
+      console.error("Payment verification error:", error);
       res.status(400).json({ 
         success: false,
         message: error.message || "Payment verification failed" 
